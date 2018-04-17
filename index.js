@@ -11,3 +11,28 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'anandapoorw@gmail.com',
+    pass: 'apoorw@3092A'
+  }
+});
+
+var mailOptions = {
+  from: 'anandapoorw@gmail.com',
+  to: 'anandapoorv@yahoo.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+    response.send
+  }
+});
