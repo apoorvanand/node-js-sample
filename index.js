@@ -13,7 +13,9 @@ app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send('Welcome to my Page')
+  client.get('search/tweets', {q: 'rip avicii',since:2017-04-19,count:20}, function(error, tweets, response) {
+   console.log(tweets);
+    response.send(tweets);
 })
 
 app.listen(app.get('port'), function() {
